@@ -1,0 +1,68 @@
+# WordPress Core Files (non includere WordPress stesso)
+# Solo il tema custom va in Git
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Build files
+*.map
+/dist/
+/build/
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# WordPress specific (se mai dovessi includere WordPress nella repo)
+# wp-config.php
+# wp-content/uploads/
+# wp-content/cache/
+# wp-content/backup*/
+# wp-content/upgrade/
+# wp-content/wp-cache-config.php
+
+# Plugin e temi non custom (non versionare plugin esterni)
+# theme/vendor/
+# theme/composer.lock
+
+# Database dumps
+*.sql
+*.sql.gz
+*.sqlite
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# LocalWP specifics (se mai committassi la cartella completa)
+# local-*.conf
+# conf/

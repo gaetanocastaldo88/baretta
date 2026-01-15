@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(curl:*)",
+      "Bash(powershell -Command \"\\(Get-Item ''c:\\\\Users\\\\gaeta\\\\Documents\\\\baretta\\\\themes\\\\baretta-custom\\\\images\\\\studio.jpg''\\).Length\")",
+      "Bash(dir:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(for f in \"C:\\\\Users\\\\gaeta\\\\Documents\\\\baretta\\\\themes\\\\baretta-custom\\\\images\\\\team\"\"*.jpg; do echo -n \"$f: \"; file \"$f\" | grep -o \"^[^:]*: [A-Z]*\" || echo \"INVALID \")",
+      "Bash(done)",
+      "Bash(file:*)"
+    ]
+  }
+}
