@@ -27,6 +27,7 @@
                     <?php else : ?>
                         <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="Baretta Associati" class="site-logo-img">
                     <?php endif; ?>
+                    <span class="site-logo-text">baretta associati</span>
                 </a>
             </div>
 

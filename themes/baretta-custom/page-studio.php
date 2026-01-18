@@ -8,14 +8,16 @@
 
 get_header(); ?>
 
-<!-- Page Header -->
-<div class="page-header">
-    <div class="container">
-        <span class="section-label">Chi Siamo</span>
-        <h1>Lo Studio</h1>
-        <p class="lead">Un gruppo di persone che condividono valori comuni per creare progetti unici</p>
+<!-- Hero Section -->
+<section class="hero hero-page">
+    <div class="hero-background" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/hero-bg.jpg'); background-position: center top;"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <span class="hero-tagline">Chi Siamo</span>
+        <h1 class="hero-title">Lo Studio</h1>
+        <p class="hero-subtitle">Un gruppo di persone che condividono valori comuni per creare progetti unici</p>
     </div>
-</div>
+</section>
 
 <!-- Studio Intro -->
 <section class="section section-lg">
@@ -187,15 +189,6 @@ get_header(); ?>
                 <div class="value-label">Progetti Completati</div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="section section-lg" style="background: var(--color-dark); color: var(--color-white);">
-    <div class="container text-center">
-        <h2 style="color: var(--color-white);">Vuoi lavorare con noi?</h2>
-        <p class="lead" style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto var(--spacing-lg);">Siamo sempre alla ricerca di talenti che condividono i nostri valori.</p>
-        <a href="mailto:careers@barettaassociati.it" class="btn btn-white">Invia il tuo CV</a>
     </div>
 </section>
 

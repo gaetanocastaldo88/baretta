@@ -13,7 +13,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="site-logo-text" style="color: #fff; margin-bottom: 1rem;">
-                        BARETTA<br><small>ASSOCIATI</small>
+                        BARETTA <small>ASSOCIATI</small>
                     </div>
                     <p>Le nostre scelte fanno la differenza.<br>I nostri progetti creano impatti positivi.</p>
                 </div>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; <?php echo date('Y'); ?> Baretta Associati s.r.l. - P.IVA 03844450126</p>
+                <p>&copy; <?php echo date('Y'); ?> Baretta Associati s.r.l. - P.IVA 03844450126 | <a href="<?php echo home_url('/privacy-policy/'); ?>">Privacy Policy</a> | <a href="<?php echo home_url('/cookie-policy/'); ?>">Cookie Policy</a> | <button id="cookie-settings-footer" style="background: none; border: none; cursor: pointer; text-decoration: underline; font-size: inherit;">Impostazioni Cookie</button> | Sito realizzato da <a href="https://castaldosolutions.it/" target="_blank" rel="noopener noreferrer">Castaldo Solutions</a></p>
                 <div class="social-links">
                     <a href="https://instagram.com/barettaassociati" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -67,6 +67,74 @@
     </footer>
 
 </div><!-- #page -->
+
+<!-- Scroll to Top Button -->
+<button id="scroll-to-top" class="scroll-to-top" aria-label="Torna su">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+</button>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-banner-content">
+        <div class="cookie-banner-text">
+            <p>Utilizziamo i cookie per migliorare la tua esperienza sul nostro sito. Alcuni cookie sono necessari per il funzionamento del sito, mentre altri ci aiutano a capire come interagisci con esso.
+            <a href="<?php echo home_url('/cookie-policy/'); ?>">Scopri di più</a></p>
+        </div>
+        <div class="cookie-banner-buttons">
+            <button id="cookie-accept" class="cookie-btn cookie-btn-accept">Accetta tutti</button>
+            <button id="cookie-reject" class="cookie-btn cookie-btn-reject">Solo necessari</button>
+            <button id="cookie-settings-open" class="cookie-btn cookie-btn-settings">Impostazioni</button>
+        </div>
+    </div>
+</div>
+
+<!-- Cookie Settings Modal -->
+<div id="cookie-settings-modal" class="cookie-modal">
+    <div class="cookie-modal-overlay"></div>
+    <div class="cookie-modal-content">
+        <div class="cookie-modal-header">
+            <h3>Impostazioni Cookie</h3>
+            <button id="cookie-modal-close" class="cookie-modal-close" aria-label="Chiudi">&times;</button>
+        </div>
+        <div class="cookie-modal-body">
+            <p>Gestisci le tue preferenze sui cookie. I cookie necessari non possono essere disabilitati in quanto essenziali per il funzionamento del sito.</p>
+
+            <div class="cookie-option">
+                <div class="cookie-option-header">
+                    <div class="cookie-option-info">
+                        <h4>Cookie Necessari</h4>
+                        <p>Essenziali per il funzionamento del sito. Includono cookie di sessione e preferenze.</p>
+                    </div>
+                    <div class="cookie-toggle">
+                        <input type="checkbox" id="cookie-necessary" checked disabled>
+                        <label for="cookie-necessary" class="toggle-label disabled">Sempre attivi</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cookie-option">
+                <div class="cookie-option-header">
+                    <div class="cookie-option-info">
+                        <h4>Cookie Analitici</h4>
+                        <p>Ci aiutano a capire come utilizzi il sito tramite Google Analytics. I dati sono anonimi.</p>
+                    </div>
+                    <div class="cookie-toggle">
+                        <input type="checkbox" id="cookie-analytics">
+                        <label for="cookie-analytics" class="toggle-label">
+                            <span class="toggle-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cookie-modal-footer">
+            <button id="cookie-save-settings" class="cookie-btn cookie-btn-accept">Salva preferenze</button>
+            <button id="cookie-accept-all-modal" class="cookie-btn cookie-btn-reject">Accetta tutti</button>
+        </div>
+    </div>
+</div>
 
 <?php wp_footer(); ?>
 </body>

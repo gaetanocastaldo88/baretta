@@ -8,14 +8,16 @@
 
 get_header(); ?>
 
-<!-- Page Header -->
-<div class="page-header">
-    <div class="container">
-        <span class="section-label">Parliamo</span>
-        <h1>Contattaci</h1>
-        <p class="lead">Siamo pronti ad ascoltare le tue idee e trasformarle in realtà</p>
+<!-- Hero Section -->
+<section class="hero hero-page">
+    <div class="hero-background" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/contact-us.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <span class="hero-tagline">Parliamo</span>
+        <h1 class="hero-title">Contattaci</h1>
+        <p class="hero-subtitle">Siamo pronti ad ascoltare le tue idee e trasformarle in realtà</p>
     </div>
-</div>
+</section>
 
 <!-- Contact Section -->
 <section class="section section-lg">
@@ -35,10 +37,6 @@ get_header(); ?>
                 <p>
                     <strong>Info generali:</strong><br>
                     <a href="mailto:info@barettaassociati.it">info@barettaassociati.it</a>
-                </p>
-                <p>
-                    <strong>Lavora con noi:</strong><br>
-                    <a href="mailto:careers@barettaassociati.it">careers@barettaassociati.it</a>
                 </p>
 
                 <h3>Social</h3>
@@ -61,43 +59,7 @@ get_header(); ?>
 
             <div class="contact-form-wrapper">
                 <h3 style="margin-bottom: var(--spacing-md);">Inviaci un messaggio</h3>
-
-                <?php
-                // If Contact Form 7 is active, use it
-                if (function_exists('wpcf7_contact_form')) :
-                    echo do_shortcode('[contact-form-7 id="contact-form" title="Contact Form"]');
-                else :
-                ?>
-                <form class="contact-form" action="#" method="post">
-                    <div class="form-group">
-                        <label for="name">Nome *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefono</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Oggetto *</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Messaggio *</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label style="display: flex; align-items: flex-start; gap: 0.5rem; text-transform: none; letter-spacing: 0;">
-                            <input type="checkbox" name="privacy" required style="margin-top: 0.25rem;">
-                            <span style="font-size: 0.85rem; font-weight: 400;">Ho letto e accetto la <a href="<?php echo home_url('/privacy-policy/'); ?>">Privacy Policy</a> *</span>
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Invia Messaggio</button>
-                </form>
-                <?php endif; ?>
+                <?php echo do_shortcode('[contact-form-7 id="69dd70e" title="Modulo di contatto 1"]'); ?>
             </div>
         </div>
     </div>

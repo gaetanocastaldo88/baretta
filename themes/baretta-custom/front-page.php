@@ -81,48 +81,73 @@ get_header(); ?>
             <p class="lead">Offriamo servizi esclusivi per trasformare la tua visione in realtà</p>
         </div>
         <div class="services-grid">
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>
-                </svg>
-                <h3>Casa ZED</h3>
-                <p>La prima abitazione bioenergetica in Italia che migliora la vita rivoluzionando il concetto di Casa. La tranquillità inizia qui.</p>
-            </div>
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-                </svg>
-                <h3>Life Cycle Assessment</h3>
-                <p>Analisi del ciclo di vita dell'edificio per identificare gli impatti ambientali e raggiungere la carbon neutrality.</p>
-            </div>
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-                <h3>Certificazioni Living Future</h3>
-                <p>Consulenza per certificazioni internazionali: Zero Carbon, Zero Energy, Living Building Challenge.</p>
-            </div>
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-                <h3>Biophilic Design</h3>
-                <p>Colleghiamo persone e natura negli ambienti costruiti, creando spazi che offrono benefici fisici e psicologici.</p>
-            </div>
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-                </svg>
-                <h3>Work Energy +</h3>
-                <p>Progettazione di ambienti lavorativi ottimizzati per produttività e creatività con misurazione della qualità ambientale.</p>
-            </div>
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                </svg>
-                <h3>Interior Design</h3>
-                <p>Progettazione di interni residenziali, commerciali e uffici con focus su armonia e funzionalità degli spazi.</p>
-            </div>
+            <?php
+            $services = new WP_Query(array(
+                'post_type'      => 'servizio',
+                'posts_per_page' => 6,
+                'orderby'        => 'menu_order',
+                'order'          => 'ASC',
+            ));
+
+            if ($services->have_posts()) :
+                while ($services->have_posts()) : $services->the_post();
+                    $icon = get_post_meta(get_the_ID(), '_baretta_service_icon', true);
+                    if (!$icon) $icon = 'box';
+            ?>
+                <a href="<?php the_permalink(); ?>" class="service-card service-card-link">
+                    <?php echo baretta_get_service_icon($icon); ?>
+                    <h3><?php the_title(); ?></h3>
+                    <p><?php echo wp_trim_words(get_the_excerpt(), 25); ?></p>
+                </a>
+            <?php
+                endwhile;
+                wp_reset_postdata();
+            else :
+                // Demo services if no real ones exist
+            ?>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/>
+                    </svg>
+                    <h3>Casa ZED</h3>
+                    <p>La prima abitazione bioenergetica in Italia che migliora la vita rivoluzionando il concetto di Casa.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+                    </svg>
+                    <h3>Life Cycle Assessment</h3>
+                    <p>Analisi del ciclo di vita dell'edificio per identificare gli impatti ambientali.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                    <h3>Certificazioni Living Future</h3>
+                    <p>Consulenza per certificazioni internazionali: Zero Carbon, Zero Energy.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <h3>Biophilic Design</h3>
+                    <p>Colleghiamo persone e natura negli ambienti costruiti.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+                    </svg>
+                    <h3>Work Energy +</h3>
+                    <p>Progettazione di ambienti lavorativi ottimizzati per produttività.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    </svg>
+                    <h3>Interior Design</h3>
+                    <p>Progettazione di interni residenziali, commerciali e uffici.</p>
+                </div>
+            <?php endif; ?>
         </div>
         <div class="text-center mt-3">
             <a href="<?php echo get_permalink(get_page_by_path('servizi')); ?>" class="btn btn-primary">Tutti i Servizi</a>

@@ -8,14 +8,16 @@
 
 get_header(); ?>
 
-<!-- Page Header -->
-<div class="page-header">
-    <div class="container">
-        <span class="section-label">Portfolio</span>
-        <h1>I Nostri Progetti</h1>
-        <p class="lead">Esplora una selezione dei nostri lavori in architettura, interior design e consulenza</p>
+<!-- Hero Section -->
+<section class="hero hero-page">
+    <div class="hero-background" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/projects-hero.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <span class="hero-tagline">Portfolio</span>
+        <h1 class="hero-title">I Nostri Progetti</h1>
+        <p class="hero-subtitle">Esplora una selezione dei nostri lavori in architettura, interior design e consulenza</p>
     </div>
-</div>
+</section>
 
 <!-- Projects Section -->
 <section class="section section-lg">

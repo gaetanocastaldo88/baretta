@@ -8,14 +8,16 @@
 
 get_header(); ?>
 
-<!-- Page Header -->
-<div class="page-header">
-    <div class="container">
-        <span class="section-label">Blog</span>
-        <h1>News</h1>
-        <p class="lead">Aggiornamenti dal mondo dell'architettura e dello studio</p>
+<!-- Hero Section -->
+<section class="hero hero-page">
+    <div class="hero-background" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/hero-news.jpg');"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <span class="hero-tagline">Blog</span>
+        <h1 class="hero-title">News</h1>
+        <p class="hero-subtitle">Aggiornamenti dal mondo dell'architettura e dello studio</p>
     </div>
-</div>
+</section>
 
 <!-- News Archive -->
 <section class="section section-lg">
