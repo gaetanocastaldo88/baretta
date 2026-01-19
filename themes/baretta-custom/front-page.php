@@ -359,80 +359,77 @@ get_header(); ?>
 </section>
 
 <!-- Team Section -->
-<section class="section section-lg">
+<section class="section section-lg team-section">
     <div class="container">
         <div class="text-center mb-4">
             <span class="section-label">Team</span>
             <h2>Le persone dietro i progetti</h2>
             <p class="lead">Un team di professionisti appassionati e dedicati</p>
         </div>
-        <div class="team-grid">
+    </div>
+
+    <div class="team-marquee">
+        <div class="team-marquee-track">
             <?php
             $team = new WP_Query(array(
                 'post_type'      => 'team',
-                'posts_per_page' => 4,
+                'posts_per_page' => -1,
                 'orderby'        => 'menu_order',
                 'order'          => 'ASC',
             ));
 
+            // Collect team members
+            $team_members = array();
             if ($team->have_posts()) :
                 while ($team->have_posts()) : $team->the_post();
-                    $role = get_post_meta(get_the_ID(), '_baretta_team_role', true);
-            ?>
-                <div class="team-member">
-                    <?php if (has_post_thumbnail()) : ?>
-                        <?php the_post_thumbnail('team-photo', array('class' => 'team-photo')); ?>
-                    <?php else : ?>
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/team-placeholder.jpg" alt="<?php the_title(); ?>" class="team-photo">
-                    <?php endif; ?>
-                    <h4 class="team-name"><?php the_title(); ?></h4>
-                    <?php if ($role) : ?>
-                        <span class="team-role"><?php echo esc_html($role); ?></span>
-                    <?php endif; ?>
-                </div>
-            <?php
+                    $team_members[] = array(
+                        'name' => get_the_title(),
+                        'role' => get_post_meta(get_the_ID(), '_baretta_team_role', true),
+                        'photo' => has_post_thumbnail() ? get_the_post_thumbnail(get_the_ID(), 'team-photo', array('class' => 'team-photo')) : '<img src="' . get_template_directory_uri() . '/images/team-placeholder.jpg" alt="' . get_the_title() . '" class="team-photo">',
+                    );
                 endwhile;
                 wp_reset_postdata();
             else :
-                // Demo team members if no real ones exist
+                // Demo team members
+                $demo_team = array(
+                    array('name' => 'Stefano Baretta', 'role' => 'Founder & Director', 'img' => 'stefano'),
+                    array('name' => 'Venelina Gancheva', 'role' => 'Founder & Interior Designer', 'img' => 'venelina'),
+                    array('name' => 'Matteo Bollini', 'role' => 'Architetto', 'img' => 'matteo'),
+                    array('name' => 'Antonio Papa', 'role' => 'Architetto', 'img' => 'antonio'),
+                    array('name' => 'Alessia Rampazzo', 'role' => 'Ingegnere Strutturale', 'img' => 'alessia'),
+                    array('name' => 'Gloria Sacchelli', 'role' => 'Amministrazione', 'img' => 'gloria'),
+                    array('name' => 'Pepe', 'role' => 'Office Dog & Mascotte', 'img' => 'pepe'),
+                );
+                foreach ($demo_team as $member) :
+                    $team_members[] = array(
+                        'name' => $member['name'],
+                        'role' => $member['role'],
+                        'photo' => '<img src="' . get_template_directory_uri() . '/images/team/' . $member['img'] . '.jpg" alt="' . $member['name'] . '" class="team-photo">',
+                    );
+                endforeach;
+            endif;
+
+            // Output members twice for seamless loop
+            for ($i = 0; $i < 2; $i++) :
+                foreach ($team_members as $member) :
             ?>
-                <div class="team-member">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/team/stefano.jpg" alt="Stefano Baretta" class="team-photo">
-                    <h4 class="team-name">Stefano Baretta</h4>
-                    <span class="team-role">Founder & Director</span>
+                <div class="team-marquee-item">
+                    <div class="team-member">
+                        <?php echo $member['photo']; ?>
+                        <h4 class="team-name"><?php echo esc_html($member['name']); ?></h4>
+                        <?php if ($member['role']) : ?>
+                            <span class="team-role"><?php echo esc_html($member['role']); ?></span>
+                        <?php endif; ?>
+                    </div>
                 </div>
-                <div class="team-member">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/team/venelina.jpg" alt="Venelina Gancheva" class="team-photo">
-                    <h4 class="team-name">Venelina Gancheva</h4>
-                    <span class="team-role">Founder & Interior Designer</span>
-                </div>
-                <div class="team-member">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/team/matteo.jpg" alt="Matteo Bollini" class="team-photo">
-                    <h4 class="team-name">Matteo Bollini</h4>
-                    <span class="team-role">Architetto</span>
-                </div>
-                <div class="team-member">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/team/antonio.jpg" alt="Antonio Papa" class="team-photo">
-                    <h4 class="team-name">Antonio Papa</h4>
-                    <span class="team-role">Architetto</span>
-                </div>
-                <div class="team-member">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/team/alessia.jpg" alt="Alessia Rampazzo" class="team-photo">
-                    <h4 class="team-name">Alessia Rampazzo</h4>
-                    <span class="team-role">Architetto</span>
-                </div>
-                <div class="team-member">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/team/gloria.jpg" alt="Gloria Sacchelli" class="team-photo">
-                    <h4 class="team-name">Gloria Sacchelli</h4>
-                    <span class="team-role">Architetto</span>
-                </div>
-                <div class="team-member">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/team/pepe.jpg" alt="Pepe" class="team-photo">
-                    <h4 class="team-name">Pepe</h4>
-                    <span class="team-role">Mascotte</span>
-                </div>
-            <?php endif; ?>
+            <?php
+                endforeach;
+            endfor;
+            ?>
         </div>
+    </div>
+
+    <div class="container">
         <div class="text-center mt-3">
             <a href="<?php echo get_permalink(get_page_by_path('studio')); ?>" class="btn btn-outline">Conosci il Team</a>
         </div>

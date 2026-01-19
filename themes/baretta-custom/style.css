@@ -875,22 +875,67 @@ p {
     gap: var(--spacing-lg);
 }
 
+/* Team Marquee */
+.team-section {
+    overflow: hidden;
+}
+
+.team-marquee {
+    width: 100%;
+    overflow: hidden;
+    padding: var(--spacing-lg) 0;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.team-marquee-track {
+    display: flex;
+    gap: var(--spacing-xl);
+    width: max-content;
+    animation: teamMarquee 35s linear infinite;
+}
+
+.team-marquee:hover .team-marquee-track {
+    animation-play-state: paused;
+}
+
+.team-marquee-item {
+    flex-shrink: 0;
+}
+
+@keyframes teamMarquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
 .team-member {
     text-align: center;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.team-marquee-item:hover .team-member {
+    transform: translateY(-10px);
 }
 
 .team-photo {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center top;
     margin: 0 auto var(--spacing-md);
     filter: grayscale(100%);
-    transition: filter var(--transition-normal);
+    transition: filter 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
 }
 
-.team-member:hover .team-photo {
+.team-marquee-item:hover .team-photo {
     filter: grayscale(0%);
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .team-name {
@@ -1392,6 +1437,21 @@ p {
 
     .team-grid {
         grid-template-columns: 1fr;
+    }
+
+    .team-photo {
+        width: 140px;
+        height: 140px;
+    }
+
+    .team-marquee-track {
+        gap: var(--spacing-lg);
+        animation-duration: 25s;
+    }
+
+    .team-marquee {
+        mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
     }
 }
 
